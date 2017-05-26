@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>backbone--自写</title>
+</head>
+<body>
+
+
+<script src="./javascript/lib/jquery/jquery.js"></script>
+<script src="./javascript/lib/underscore/underscore.js"></script>
+<script src="./javascript/backbone_self.js"></script>
+<script type="text/javascript">
+var Car = Backbone.Model.extend({
+	"defaults": {
+		name: "小车"
+	}
+});
+var car1 = new Car({
+	id: 101,
+	user: "xbl"
+});
+car1.on("change", function(model, user) {
+	console.log("用户变化了");
+});
+car1.on("change:user", function(model, user) {
+	console.log("新用户名为:" + user);
+});
+car1.on("change:name", function(model, name) {
+	console.log("新车名为:" + name);
+});
+
+car1.set("user", "xbl2");
+console.log(car1);
+
+</script>
+</body>
+</html>
